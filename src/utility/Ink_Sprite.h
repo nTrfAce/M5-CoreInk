@@ -6,6 +6,11 @@
 #define CLEAR_DRAWBUFF  0x01
 #define CLEAR_LASTBUFF  0x02
 
+// Swap any type
+template <typename T> static inline void
+swap_coord(T& a, T& b) { T t = a; a = b; b = t; }
+
+
 class Ink_Sprite : private Ink_eSPI
 {
 public:
@@ -24,6 +29,14 @@ public:
 
     void clear( int cleanFlag = CLEAR_DRAWBUFF );
     void drawPix(uint16_t posX,uint16_t posY,uint8_t pixBit);
+    void drawPixel(uint16_t posX,uint16_t posY,uint8_t pixBit);
+    void drawCircle(int32_t x, int32_t y, int32_t r, uint32_t color);
+    void fillCircle(int16_t x0, int16_t y0, int16_t r, uint8_t color);
+    void drawTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint8_t color);
+    void fillTriangle(int16_t x0, int16_t y0, int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint8_t color);
+    void drawLine(int16_t xs, int16_t ys, int16_t xe, int16_t ye, uint8_t color);
+    void drawFastVLine(int16_t x, int16_t y, int16_t h, uint8_t color);
+    void drawFastHLine(int16_t x, int16_t y, int16_t w, uint8_t color);
     void FillRect(uint16_t posX,
                   uint16_t posY,
                   uint16_t width,
